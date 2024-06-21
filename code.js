@@ -130,6 +130,14 @@ setPushables({
 });
 
 // inputs for player movement control
+onInput("w", () => {
+  getFirst(player).y -= 1;
+});
+
+onInput("a", () => {
+  getFirst(player).x -= 1;
+});
+
 onInput("s", () => {
   getFirst(player).y += 1; // positive y is downwards
 });
