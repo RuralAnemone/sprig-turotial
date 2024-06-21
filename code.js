@@ -118,6 +118,16 @@ p.w.
 ..bg`
 ];
 
+// create sfx
+const move = tune`
+83.79888268156425: F4~83.79888268156425,
+2597.7653631284916`
+const push = tune`
+66.66666666666667: F4~66.66666666666667,
+66.66666666666667: G4~66.66666666666667,
+66.66666666666667: B4~66.66666666666667,
+1933.3333333333335`
+
 // set the map displayed to the current level
 const currentLevel = levels[level];
 setMap(currentLevel);
@@ -133,18 +143,22 @@ setPushables({
 // inputs for player movement control
 onInput("w", () => {
   getFirst(player).y -= 1;
+  playTune(move);
 });
 
 onInput("a", () => {
   getFirst(player).x -= 1;
+  playTune(move);
 });
 
 onInput("s", () => {
   getFirst(player).y += 1; // positive y is downwards
+  playTune(move);
 });
 
 onInput("d", () => {
   getFirst(player).x += 1;
+  playTune(move);
 });
 
 // input to reset level
@@ -165,6 +179,9 @@ afterInput(() => {
   
   // count the number of tiles with goals and boxes
   const numberCovered = tilesWith(goal, box).length;
+
+  // if (numberCovered < targetNumber && numberCovered > 0) playSound(partiallyCovered);
+  // I need a diff for this though
 
   // if the number of goals is the same as the number of goals covered
   // all goals are covered and we can go to the next level
