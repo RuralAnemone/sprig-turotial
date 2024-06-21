@@ -126,7 +126,8 @@ setSolids([ player, box, wall ]); // other sprites cannot go inside of these spr
 
 // allow certain sprites to push certain other sprites
 setPushables({
-  [player]: [box]
+  [player]: [box],
+  [box]: [box]
 });
 
 // inputs for player movement control
